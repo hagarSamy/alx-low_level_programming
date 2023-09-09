@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 /**
- * main - Entry point
- *
- * Return: 0 on success
- */
+*main - Entry point
+*
+*Return: 0 on success
+*/
 
 int main(void)
 {
@@ -32,9 +32,9 @@ int main(void)
 					putchar(' ');
 				}
 			}
+			j++;
 		}
-		j++;
+		i++;
 	}
-	i++;
 	return (0);
 }
