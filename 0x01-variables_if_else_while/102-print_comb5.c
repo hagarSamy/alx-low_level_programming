@@ -33,7 +33,7 @@ int main(void)
 				}
 			}
 		}
-		i++;
+		j++;
 	}
 	i++;
 	return (0);
