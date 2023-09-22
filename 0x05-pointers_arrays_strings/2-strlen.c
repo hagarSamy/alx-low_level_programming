@@ -10,7 +10,6 @@ int _strlen(char *s)
 {
 	int i;
 
-	for (i = 0; *s != '\0'; i++)
-		++i; /*because first count is 0 like its index*/
+	for (i = 0; s[i] != '\0'; i++)
 	return (i);
 }
