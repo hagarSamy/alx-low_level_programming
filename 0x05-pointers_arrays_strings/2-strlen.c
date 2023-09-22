@@ -3,7 +3,7 @@
 /**
  * _strlen - calculates the length of a string
  * @s: pointer to a string
- * Retuen: number of bytes in string
+ * Return: number of bytes in string
  */
 
 int _strlen(char *s)
