@@ -31,20 +31,17 @@ int wordcount(char *str)
 
 	while (str[i] != '\0')
 	{
-		if (str[i] != ' ')
+		if (str[i] != ' ' && isword == 0)
 		{
 			isword = 1;
+			nwords++;
 		}
 		if (str[i] == ' ')
 		{
-			if (isword == 1)
-				nwords += 1;
 			isword = 0;
 		}
 		i++;
 	}
-	if (str[len - 1] != ' ')
-		nwords += 1;
 	return (nwords);
 }
 
