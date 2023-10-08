@@ -4,7 +4,7 @@
  * *array_range - creates an array of integers
  * @min: least value
  * @max: maximum value
- * Rreturn: pointer to the newly allocated array
+ * Return: pointer to the newly allocated array
  * NULL if it fails or if min > max
  */
 
