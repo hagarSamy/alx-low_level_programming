@@ -20,11 +20,11 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 		return (NULL);
 	}
 	if (ptr == NULL)
-		ptrn = (malloc(new_size));
+		return (malloc(new_size));
 	ptrn = malloc(new_size);
 		if (ptrn == NULL)
 			return (NULL);
-	for (i = 0; i < old_size && i < new_size; i++)
+	for (i = 0; i < old_size && i < new_size - 1; i++)
 		ptrn[i] = ((char *)ptr)[i];
 	free(ptr);
 	return (ptrn);
