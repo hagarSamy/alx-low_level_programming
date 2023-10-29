@@ -8,13 +8,14 @@
 void print_binary(unsigned long int n)
 {
 	int flag = 0;
+	unsigned long int mask;
 
 	if (n == 0)
 	{
 		_putchar('0');
 		return;
 	}
-	for (unsigned long int mask = 1UL << 63; mask > 0; mask >>= 1)
+	for (mask = 1UL << 63; mask > 0; mask >>= 1)
 	{
 		if (n & mask)
 		{
