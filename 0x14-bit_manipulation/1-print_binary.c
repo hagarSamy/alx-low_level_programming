@@ -16,10 +16,7 @@ _putchar('0');
 return;
 }
 
-while (mask < n)
-{
-mask <<= 1;
-}
+mask <<= 63;
 
 if (mask > n)
 mask >>= 1;
