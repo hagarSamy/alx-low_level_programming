@@ -27,10 +27,10 @@ int append_text_to_file(const char *filename, char *text_content)
 		written = write(fd, text_content, len);
 		if (written == -1 || written != len)
 			return (-1);
-    }
-    closed = close(fd);
-    if (closed == -1)
-        return (-1);
-   
-    return (1);
+	}
+	closed = close(fd);
+	if (closed == -1)
+		return (-1);
+
+	return (1);
 }
