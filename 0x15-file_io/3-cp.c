@@ -38,11 +38,16 @@ int main(int ac, char **av)
 		}
 	}
 	closed1 = close(filefrom_fd);
-	closed2 = close(fileto_fd);
-	if (closed1 == -1 || closed2 == -1)
+	if (closed1 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close %i\n",errno == EBADF ? -1 : errno);
-		exit(EXIT_FAILURE);
+		dprintf(STDERR_FILENO, "Error: Can't close %i\n",filefrom_fd);
+		exit(100);
+	}
+	closed2 = close(fileto_fd);
+	if (closed2 == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close %i\n",fileto_fd);
+		exit(100);
 	}
 	return (0);
 }
