@@ -45,12 +45,10 @@ int main(int ac, char **av)
 	if (close(filefrom_fd) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close %i\n", filefrom_fd);
-		exit(100);
-	}
+		exit(100); }
 	if (close(fileto_fd) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close %i\n", fileto_fd);
-		exit(100);
-	}
+		exit(100); }
 	return (0);
 }
