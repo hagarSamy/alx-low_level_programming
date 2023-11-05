@@ -29,7 +29,7 @@ int main(int ac, char **av)
 	fileto_fd = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (fileto_fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+		dprintf(STDERR_FILENO, "Error: Can't raed from file %s\n", av[2]);
 		exit(99);
 	}
 	while (read_bytes != 0)
