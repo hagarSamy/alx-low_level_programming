@@ -12,7 +12,8 @@
 
 int main(int ac, char **av)
 {
-	int filefrom_fd, fileto_fd, written, read_bytes;
+	int filefrom_fd, fileto_fd;
+	ssize_t written, read_bytes = 1;
 	char buffer[1024];
 
 	if (ac != 3)
@@ -31,9 +32,9 @@ int main(int ac, char **av)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
 		exit(99);
 	}
-	read_bytes = read(filefrom_fd, buffer, 1024);
-	while (read_bytes > 0)
+	while (read_bytes != 0)
 	{
+		read_bytes = read(filefrom_fd, buffer, 1024);
 		written = write(fileto_fd, buffer, read_bytes);
 		if (written == -1 || written != read_bytes)
 		{
