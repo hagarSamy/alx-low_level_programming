@@ -28,7 +28,8 @@ int main(int ac, char **av)
 		exit(98);
 	}
 	fileto_fd = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	while ((read_bytes = read(filefrom_fd, buffer, sizeof(buffer))) > 0)
+	read_bytes = read(filefrom_fd, buffer, 1024);
+	while (read_bytes)
 	{
 		written = write(fileto_fd, buffer, read_bytes);
 		if (written == -1 || written != read_bytes)
