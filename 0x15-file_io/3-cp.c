@@ -40,13 +40,13 @@ int main(int ac, char **av)
 	closed1 = close(filefrom_fd);
 	if (closed1 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close %i\n",filefrom_fd);
+		dprintf(STDERR_FILENO, "Error: Can't close %i\n", filefrom_fd);
 		exit(100);
 	}
 	closed2 = close(fileto_fd);
 	if (closed2 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close %i\n",fileto_fd);
+		dprintf(STDERR_FILENO, "Error: Can't close %i\n", fileto_fd);
 		exit(100);
 	}
 	return (0);
