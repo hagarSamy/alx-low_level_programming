@@ -33,6 +33,8 @@ int main(int ac, char **av)
 		if (written == -1 || written != read_bytes)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+			close(filefrom_fd);
+			close(fileto_fd);
 			exit(99);
 		}
 	}
