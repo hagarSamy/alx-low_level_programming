@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
+#include <errno.h>
 
 /**
  * main - entry point
@@ -12,7 +13,7 @@
 
 int main(int ac, char **av)
 {
-	int filefrom_fd, fileto_fd, written, closed1, closed2, read_bytes;
+	int filefrom_fd, fileto_fd, written, read_bytes, closed1, closed2;
 	char buffer[1024];
 
 	if (ac != 3)
@@ -33,22 +34,15 @@ int main(int ac, char **av)
 		if (written == -1 || written != read_bytes)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
-			close(filefrom_fd);
-			close(fileto_fd);
 			exit(99);
 		}
 	}
 	closed1 = close(filefrom_fd);
-	if (closed1 == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close %i\n", filefrom_fd);
-		exit(100);
-	}
 	closed2 = close(fileto_fd);
-	if (closed2 == -1)
+	if (closed1 == -1 || closed2 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close %i\n", fileto_fd);
-		exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close %i\n",errno == EBADF ? -1 : errno);
+		exit(EXIT_FAILURE);
 	}
 	return (0);
 }
