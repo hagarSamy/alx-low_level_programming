@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <errno.h>
 
 /**
  * main - entry point
@@ -13,7 +12,7 @@
 
 int main(int ac, char **av)
 {
-	int filefrom_fd, fileto_fd, written, read_bytes, closed1, closed2;
+	int filefrom_fd, fileto_fd, written, read_bytes;
 	char buffer[1024];
 
 	if (ac != 3)
@@ -25,11 +24,15 @@ int main(int ac, char **av)
 	if (filefrom_fd == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
+		exit(98); }
+	fileto_fd = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	read_bytes = read(filefrom_fd, buffer, 1024);
+	if (read_bytes == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
 		exit(98);
 	}
-	fileto_fd = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	read_bytes = read(filefrom_fd, buffer, 1024);
-	while (read_bytes)
+	while (read_bytes > 0)
 	{
 		written = write(fileto_fd, buffer, read_bytes);
 		if (written == -1 || written != read_bytes)
@@ -38,14 +41,12 @@ int main(int ac, char **av)
 			exit(99);
 		}
 	}
-	closed1 = close(filefrom_fd);
-	if (closed1 == -1)
+	if (close(filefrom_fd) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close %i\n", filefrom_fd);
 		exit(100);
 	}
-	closed2 = close(fileto_fd);
-	if (closed2 == -1)
+	if (close(fileto_fd) == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close %i\n", fileto_fd);
 		exit(100);
