@@ -7,7 +7,7 @@
  * main - entry point
  * @ac: Argument count
  * @av: Argument vector
- * Return: void
+ * Return: 0 on success
 */
 
 int main(int ac, char **av)
@@ -33,6 +33,7 @@ int main(int ac, char **av)
 		if (written == -1 || written != read_bytes)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+			exit(99);
 		}
 	}
 	closed1 = close(filefrom_fd);
@@ -47,4 +48,5 @@ int main(int ac, char **av)
 		dprintf(STDERR_FILENO, "Error: Can't close %i\n", fileto_fd);
 		exit(100);
 	}
+	return (0);
 }
