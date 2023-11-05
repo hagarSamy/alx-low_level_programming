@@ -26,12 +26,12 @@ int main(int ac, char **av)
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
 		exit(98); }
 	fileto_fd = open(av[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	read_bytes = read(filefrom_fd, buffer, 1024);
-	if (read_bytes == -1)
+	if (fileto_fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", av[1]);
-		exit(98);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", av[2]);
+		exit(99);
 	}
+	read_bytes = read(filefrom_fd, buffer, 1024);
 	while (read_bytes > 0)
 	{
 		written = write(fileto_fd, buffer, read_bytes);
