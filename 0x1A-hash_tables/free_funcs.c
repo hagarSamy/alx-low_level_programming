@@ -13,8 +13,8 @@ void freeNode(hash_node_t* node)
 	while (temp)
 	{
 		node = node->next;
-		free(node->key);
-        free(node->value);
+		free(temp->key);
+        free(temp->value);
 		free(temp);
 		temp = node;
 	}
