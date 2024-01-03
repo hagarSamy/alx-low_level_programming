@@ -4,13 +4,13 @@
  * hash_table_get -  retrieves a value associated with a key
  * @ht: hash table to deal with
  * @key: key to retreive the value at
- * 
- * Return: the value retreived 
+ *
+ * Return: the value retreived
  * or NULL if key couldn’t be found
 */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
-    unsigned long int idx;
+	unsigned long int idx;
 	hash_node_t *current;
 
 	if (ht == NULL || key == NULL)
@@ -26,5 +26,5 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		}
 		current = current->next;
 	}
-    return (NULL);
+	return (NULL);
 }
