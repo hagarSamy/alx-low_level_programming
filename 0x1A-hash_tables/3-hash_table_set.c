@@ -18,11 +18,11 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	idx = key_index((const unsigned char *)key, ht->size);
 	current = ht->array[idx];
-	while(current)
+	while (current)
 	{
-		if(strcmp(current->key, key) == 0)
+		if (strcmp(current->key, key) == 0)
 		{
-			free (current->value);
+			free(current->value);
 			current->value = strdup(value);
 			return (1);
 		}
