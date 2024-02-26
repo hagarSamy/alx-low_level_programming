@@ -1,12 +1,12 @@
 # my third makefile(first useful to be)
-# utilizing 
+# utilizing -c to turn SRC files to OBJs
 CC = gcc
-SRC = main.c school .c
+SRC = main.c school.c
 OBJ = files_oed
 NAME = school
 
 files_oed:
-	$(SCR:=%.c=%.o)
+	$(SRC:=%.c=%.o)
 all:
 	$(CC) -c -o $(OBJ) $(SRC) $(NAME).c
 	$(CC) $(OBJ) -o $(NAME)
