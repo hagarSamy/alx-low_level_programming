@@ -1,4 +1,4 @@
-# now with variables
+# my second makefile with variables
 CC:= gcc
 SRC:= *.c
 all:
