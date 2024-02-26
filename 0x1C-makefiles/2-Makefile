@@ -1,7 +1,7 @@
 # my third makefile(first useful to be)
 # utilizing 
 CC = gcc
-SRC = *.c
+SRC = main.c school .c
 OBJ = files_oed
 NAME = school
 
