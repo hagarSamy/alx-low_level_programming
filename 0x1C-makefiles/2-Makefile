@@ -1,0 +1,12 @@
+# my third makefile(first useful to be)
+# utilizing 
+CC = gcc
+SRC = *.c
+OBJ = files_oed
+NAME = school
+
+files_oed:
+	$(SCR:=%.c=%.o)
+all:
+	$(CC) -c -o $(OBJ) $(SRC) $(NAME).c
+	$(CC) $(OBJ) -o $(NAME)
