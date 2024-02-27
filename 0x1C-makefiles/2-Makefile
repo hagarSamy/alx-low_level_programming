@@ -3,11 +3,9 @@
 # -c prevents automatic linking
 CC = gcc
 SRC = main.c school.c
-OBJ = main.o school.o
+OBJ = $(SRC:%.c=%.o)
 NAME = school
 
-$(OBJ): %.o: %.c
-	$(CC) -c -o $(SRC) $&lt
 all: $(NAME)
 
 $(NAME): $(OBJ)
