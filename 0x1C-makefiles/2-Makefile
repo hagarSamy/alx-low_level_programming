@@ -7,7 +7,7 @@ OBJ = main.o school.o
 NAME = school
 
 $(OBJ): %.o: %.c
-	$(CC) -c -o $@ $&lt
+	$(CC) -c -o $(SRC) $&lt
 all: $(NAME)
 
 $(NAME): $(OBJ)
