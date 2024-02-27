@@ -1,0 +1,27 @@
+# ADVANCED mkf
+CC = gcc
+SRC = main.c school.c
+OBJ = $(SRC:%.c=%.o)
+NAME = school
+RM = rm
+CFLAGS = -Wall -Werror -Wextra -pedantic
+
+.PHONY = all clean oclean fclean re $(NAME)
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	$(CC) ${CFLAGS} $(OBJ) -o $(NAME)
+
+# deletes all Emacs and Vim temporary files along with the executable
+clean:
+	$(RM) -f *~ $(NAME)
+
+# deletes the object files
+oclean:
+	$(RM) -f $(OBJ) $(NAME)
+
+# deletes all Emacs and Vim temporary files, the executable, and the object files
+fclean: oclean clean
+
+#first cleaning everything then building again with all
+re: fclean all
